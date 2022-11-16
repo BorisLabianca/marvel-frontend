@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 // Import des composants
 import ComicCard from "../components/ComicCard";
 
-const Comics = () => {
+const Comics = ({ search }) => {
   const [comics, setComics] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchComics = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/comics");
+        const response = await axios.get(
+          `http://localhost:4000/comics?title=${search}`
+        );
         setComics(response.data);
         setLoading(false);
       } catch (error) {
@@ -21,7 +23,7 @@ const Comics = () => {
     };
     fetchComics();
     // console.log(comics);
-  }, []);
+  }, [search]);
 
   return loading ? (
     <span>Nous faisons le tri dans les boîtes</span>

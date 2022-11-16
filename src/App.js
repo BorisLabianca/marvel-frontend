@@ -11,14 +11,14 @@ import Header from "./components/Header";
 
 function App() {
   // State utilisés dans plusieurs pages/composants
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
 
   return (
     <Router>
       <Header search={search} setSearch={setSearch} />
       <Routes>
         <Route path="/" element={<Personnages search={search} />} />
-        <Route path="/comics" element={<Comics />} />
+        <Route path="/comics" element={<Comics search={search} />} />
       </Routes>
     </Router>
   );

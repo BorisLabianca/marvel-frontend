@@ -3,6 +3,10 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: white;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
 header {
   height: 100px;
   background-color: black;
@@ -17,15 +21,65 @@ header .header-container {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+header .logo-div {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  align-items: center;
 }
 header .top-logo {
   height: 50%;
 }
+header .header-container .nav-section {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+header .header-container .nav-section .search {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+header .header-container .nav-section .search input {
+  width: 80%;
+  height: 50%;
+}
+header .header-container .nav-section .site-nav-btns {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+header .header-container .nav-section .site-nav-btns .page-link {
+  color: white;
+  font-size: 20px;
+}
+header .header-container .login-signup {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header-container .login-signup .page-link {
+  color: white;
+  font-size: 20px;
+}
+
 .card-container {
   max-width: 1220px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  gap: 10px;
 }
 .character-card {
   background-color: white;
@@ -39,9 +93,7 @@ header .top-logo {
   flex-direction: column;
   cursor: pointer;
 }
-.character-card:not(:nth-child(5)) {
-  margin-right: 10px;
-}
+
 .character-card:active {
   box-shadow: 1px 1px 1px black;
   transform: translateY(5px);
@@ -74,9 +126,7 @@ header .top-logo {
   flex-direction: column;
   cursor: pointer;
 }
-.comic-card:not(:nth-child(5)) {
-  margin-right: 10px;
-}
+
 .comic-card:active {
   box-shadow: 1px 1px 1px black;
   transform: translateY(5px);
