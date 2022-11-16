@@ -1,7 +1,4 @@
 const CharacterCard = ({ character }) => {
-  const imgUrl = character.thumbnail.path + "." + character.thumbnail.extension;
-  const name = character.name;
-
   //   console.log(imgUrl);
   return (
     <div className="character-card">
@@ -10,7 +7,7 @@ const CharacterCard = ({ character }) => {
         alt={"Personnage : " + character.name}
         className="profile-pic"
       />
-      <div className="char-name">{name}</div>
+      <div className="char-name">{character.name}</div>
       {character.description ? (
         <div className="char-desc">{character.description}</div>
       ) : (

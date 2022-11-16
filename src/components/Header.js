@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 // Import du logo
 import logoMarvel from "../assets/images/marvel_logo.png";
+import captainAmerica from "../assets/images/captain_america.png";
 
-const Header = ({ search, setSearch }) => {
+const Header = () => {
   return (
     <header>
       <div className="header-container">
@@ -13,17 +14,12 @@ const Header = ({ search, setSearch }) => {
         </div>
 
         <div className="nav-section">
-          <div className="search">
-            <input
-              type="text"
-              placeholder="Ex : Captain America"
-              value={search}
-              onChange={(event) => {
-                setSearch(event.target.value);
-              }}
-            />
-          </div>
           <div className="site-nav-btns">
+            <img
+              src={captainAmerica}
+              alt="Captain America"
+              className="captain-america"
+            />
             <Link to="/" className="page-link">
               <span>Personnages</span>
             </Link>
