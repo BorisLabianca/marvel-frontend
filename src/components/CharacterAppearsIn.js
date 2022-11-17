@@ -2,6 +2,12 @@
 import { Link } from "react-router-dom";
 
 const CharacterAppearsIn = ({ apparition }) => {
+  const placeholderImage =
+    "https://res.cloudinary.com/dbe27rnpk/image/upload/v1668682580/Marvel/cartoon-comic-pop-art-cover-background-template_530597-495_v4t5nz.webp";
+  const onImageError = (event) => {
+    event.target.src = placeholderImage;
+  };
+
   return (
     <Link to={`/comic/${apparition._id}`}>
       <h2>{apparition.title}</h2>
@@ -13,6 +19,7 @@ const CharacterAppearsIn = ({ apparition }) => {
             : apparition.thumbnail.path + "." + apparition.thumbnail.extension
         }
         alt={"Titre :" + apparition.title}
+        onError={onImageError}
       />
     </Link>
   );
