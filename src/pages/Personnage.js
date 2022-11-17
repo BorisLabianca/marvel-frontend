@@ -10,22 +10,25 @@ const Personnage = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState();
   const [loading, setLoading] = useState(true);
-  const [appearsIn, setAppearsIn] = useState();
+  // const [appearsIn, setAppearsIn] = useState();
 
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:4000/personnage/${id}`
-        );
+        const response = await axios.get(`http://localhost:4000/comics/${id}`);
+
+        // await axios.get(
+        //   `http://localhost:4000/personnage/${id}`
+        // );
 
         setCharacter(response.data);
 
-        const appearsInResponse = await axios.get(
-          `http://localhost:4000/comics/${id}`
-        );
-        // console.log(appearsInResponse.data);
-        setAppearsIn(appearsInResponse.data);
+        // const appearsInResponse = await axios.get(
+        //   `http://localhost:4000/comics/${id}`
+        // );
+        // // console.log("responde.data", response.data);
+        // // console.log(appearsInResponse.data);
+        // setAppearsIn(appearsInResponse.data);
         setLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -59,7 +62,7 @@ const Personnage = () => {
           🙏
         </span>
       )}
-      {appearsIn.comics.map((apparition) => {
+      {character.comics.map((apparition) => {
         return (
           <CharacterAppearsIn key={apparition._id} apparition={apparition} />
         );

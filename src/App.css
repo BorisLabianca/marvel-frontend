@@ -172,3 +172,14 @@ header .header-container .login-signup .page-link {
   height: 15%;
   overflow: hidden;
 }
+
+/* Signup page */
+.signup-form {
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+}
+.signup-form .signup-info {
+  display: flex;
+  flex-direction: column;
+}
