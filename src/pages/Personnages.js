@@ -4,18 +4,21 @@ import { useEffect, useState } from "react";
 
 // Import des composants
 import CharacterCard from "../components/CharacterCard";
+import ToolBar from "../components/ToolBar";
 
 const Personnages = () => {
   const [characters, setCharacters] = useState();
   const [loading, setLoading] = useState(true);
   const [searchCharacter, setSearchCharacter] = useState("");
+  const [limit, setLimit] = useState(100);
+  const [skip, setSkip] = useState(0);
   // console.log(search);
 
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/personnages?name=${searchCharacter}`
+          `http://localhost:4000/personnages?name=${searchCharacter}&skip=${skip}&limit=${limit}`
         );
         // console.log(response.data.results);
         setCharacters(response.data);
@@ -26,26 +29,21 @@ const Personnages = () => {
       }
     };
     fetchCharacters();
-  }, [searchCharacter]);
+  }, [searchCharacter, skip, limit]);
 
   return loading ? (
     <span>Vos héros se réunissent</span>
   ) : (
     <div>
-      <div className="search-bar-n-pagination">
-        <input
-          type="text"
-          placeholder="Type in the name of a Hero"
-          value={searchCharacter}
-          className="search-bar"
-          onChange={(event) => {
-            setSearchCharacter(event.target.value);
-          }}
-        />
-        <button>Previous</button>
-        <span>1</span>
-        <button>Next</button>
-      </div>
+      <ToolBar
+        searchContent={searchCharacter}
+        setSearchContent={setSearchCharacter}
+        placeholder="Type in the name of a Hero"
+        limit={limit}
+        setLimit={setLimit}
+        skip={skip}
+        setSkip={setSkip}
+      />
 
       <div className="card-container">
         {characters.results.map((character) => {

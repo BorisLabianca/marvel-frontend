@@ -2,12 +2,20 @@ const CharacterCard = ({ character }) => {
   //   console.log(imgUrl);
   return (
     <div className="character-card">
+      <div className="char-name">{character.name}</div>
       <img
-        src={character.thumbnail.path + "." + character.thumbnail.extension}
+        src={
+          character.thumbnail.path ===
+            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ||
+          character.thumbnail.path ===
+            "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708"
+            ? "https://res.cloudinary.com/dbe27rnpk/image/upload/v1668681474/Marvel/super_hero_filler_a22i0y.png"
+            : character.thumbnail.path + "." + character.thumbnail.extension
+        }
         alt={"Personnage : " + character.name}
         className="profile-pic"
       />
-      <div className="char-name">{character.name}</div>
+
       {character.description ? (
         <div className="char-desc">{character.description}</div>
       ) : (

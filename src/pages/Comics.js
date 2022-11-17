@@ -4,17 +4,20 @@ import { useEffect, useState } from "react";
 
 // Import des composants
 import ComicCard from "../components/ComicCard";
+import ToolBar from "../components/ToolBar";
 
 const Comics = () => {
   const [comics, setComics] = useState();
   const [loading, setLoading] = useState(true);
   const [searchComic, setSearchComic] = useState("");
+  const [limit, setLimit] = useState(100);
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fetchComics = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/comics?title=${searchComic}`
+          `http://localhost:4000/comics?title=${searchComic}&skip=${skip}&limit=${limit}`
         );
         setComics(response.data);
         setLoading(false);
@@ -24,23 +27,21 @@ const Comics = () => {
     };
     fetchComics();
     // console.log(comics);
-  }, [searchComic]);
+  }, [searchComic, skip, limit]);
 
   return loading ? (
     <span>Nous faisons le tri dans les boîtes</span>
   ) : (
     <div>
-      <div className="search-bar-n-pagination">
-        <input
-          type="text"
-          placeholder="Type in the title of a comic book"
-          value={searchComic}
-          className="search-bar"
-          onChange={(event) => {
-            setSearchComic(event.target.value);
-          }}
-        />
-      </div>
+      <ToolBar
+        searchContent={searchComic}
+        setSearchContent={setSearchComic}
+        placeholder="Type in the title of a comic book"
+        limit={limit}
+        setLimit={setLimit}
+        skip={skip}
+        setSkip={setSkip}
+      />
       <div className="card-container">
         {comics.results.map((comic) => {
           return <ComicCard key={comic._id} comic={comic} />;
