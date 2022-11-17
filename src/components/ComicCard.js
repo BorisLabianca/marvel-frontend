@@ -1,6 +1,9 @@
+// Import des dépendances
+import { Link } from "react-router-dom";
+
 const ComicCard = ({ comic }) => {
   return (
-    <div className="comic-card">
+    <Link to={`/comic/${comic._id}`} className="comic-card">
       <div className="comic-title">{comic.title}</div>
       <img
         src={
@@ -14,7 +17,7 @@ const ComicCard = ({ comic }) => {
       />
 
       <div className="comic-desc">{comic.description}</div>
-    </div>
+    </Link>
   );
 };
 

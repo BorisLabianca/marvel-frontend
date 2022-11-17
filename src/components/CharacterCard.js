@@ -1,7 +1,10 @@
+// Import des dépendances
+import { Link } from "react-router-dom";
+
 const CharacterCard = ({ character }) => {
-  //   console.log(imgUrl);
+  // console.log(character._id);
   return (
-    <div className="character-card">
+    <Link to={`/personnage/${character._id}`} className="character-card">
       <div className="char-name">{character.name}</div>
       <img
         src={
@@ -21,7 +24,7 @@ const CharacterCard = ({ character }) => {
       ) : (
         <div className="desc-filler"></div>
       )}
-    </div>
+    </Link>
   );
 };
 
