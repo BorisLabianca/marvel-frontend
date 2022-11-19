@@ -1,5 +1,6 @@
 // Import des dépendances
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CharacterCard = ({ character }) => {
   // console.log(character._id);
@@ -18,12 +19,13 @@ const CharacterCard = ({ character }) => {
         alt={"Personnage : " + character.name}
         className="profile-pic"
       />
-
       {character.description ? (
         <div className="char-desc">{character.description}</div>
       ) : (
         <div className="desc-filler"></div>
       )}
+      <FontAwesomeIcon icon="fa-heart-circle-plus" className="add" />
+      <FontAwesomeIcon icon="fa-heart-circle-check" className="fav" />
     </Link>
   );
 };

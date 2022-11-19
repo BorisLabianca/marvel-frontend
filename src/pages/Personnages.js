@@ -1,4 +1,4 @@
-// Import des des dépendances
+// Import des des dépendances et hooks
 import axios from "axios";
 import { useEffect, useState } from "react";
 

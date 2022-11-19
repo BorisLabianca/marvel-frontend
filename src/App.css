@@ -7,6 +7,8 @@ a {
   text-decoration: none;
   color: black;
 }
+
+/* Header */
 header {
   height: 100px;
   background-color: black;
@@ -77,6 +79,15 @@ header .header-container .login-signup .page-link {
   color: white;
   font-size: 20px;
 }
+header .header-container .deconnexion {
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Barre de recherche */
 .search-bar-n-pagination {
   margin: 10px auto;
   max-width: 1220px;
@@ -115,6 +126,15 @@ header .header-container .login-signup .page-link {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  position: relative;
+}
+.fav {
+  position: absolute;
+  left: 30px;
+  top: 310px;
+  font-size: 24px;
+  color: white;
+  filter: drop-shadow(0px 0px 2px black);
 }
 
 .character-card:active {

@@ -1,3 +1,4 @@
+// Import des dépendances et hooks
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,14 +8,14 @@ const Signup = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [emailUsed, setEmailUsed] = useState(false);
-  const [usernameUsed, setUsernameUsed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   //   fonction pour gérer la demande d'inscription
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setErrorMessage("");
       if (!username) {
         return;
       }
@@ -34,20 +35,25 @@ const Signup = ({ handleToken }) => {
         const token = response.data.token;
         handleToken(token);
         navigate("/");
-        if (emailUsed) {
-          setEmailUsed(false);
-        }
-        if (usernameUsed) {
-          setUsernameUsed(false);
-        }
+
+        // if (emailUsed) {
+        //   setEmailUsed(false);
+        // }
+        // if (usernameUsed) {
+        //   setUsernameUsed(false);
+        // }
       }
     } catch (error) {
-      console.log(error.response);
+      console.log(error.response.data);
       if (error.response?.data.message === "This email is already used.") {
-        setEmailUsed(true);
+        setErrorMessage(
+          "Cet e-mail est déjà utilisé par un héro / une héroïne 🦸‍♂️🦸🏻‍♀️"
+        );
       }
       if (error.response?.data.message === "This username is already used.") {
-        setUsernameUsed(true);
+        setErrorMessage(
+          "Il y a déjà un héro / une héroïne qui porte ce nom 🦸‍♂️🦸🏻‍♀️"
+        );
       }
     }
   };
@@ -60,9 +66,9 @@ const Signup = ({ handleToken }) => {
       />
       <div className="signup-info">
         <h1>Rejoinez l'équipe de vos super héros !</h1>
-        {usernameUsed ? (
+        {/* {usernameUsed ? (
           <p>Il y a déjà un héro / une héroïne qui porte ce nom 🦸‍♂️🦸🏻‍♀️</p>
-        ) : null}
+        ) : null} */}
         <input
           type="text"
           placeholder="Cap'"
@@ -71,9 +77,7 @@ const Signup = ({ handleToken }) => {
             setUsername(event.target.value);
           }}
         />
-        {emailUsed ? (
-          <p>Cet e-mail est déjà utilisé par un héro / une héroïne 🦸‍♂️🦸🏻‍♀️</p>
-        ) : null}
+        {errorMessage ? <p>{errorMessage}</p> : null}
         <input
           type="email"
           placeholder="captain.america@avengers.com"

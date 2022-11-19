@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import logoMarvel from "../assets/images/marvel_logo.png";
 import captainAmerica from "../assets/images/captain_america.png";
 
-const Header = () => {
+const Header = ({ token, handleToken }) => {
   return (
     <header>
       <div className="header-container">
-        <div className="logo-div">
+        <Link to="/" className="logo-div">
           <img src={logoMarvel} alt="Logo Marvel" className="top-logo" />
-        </div>
+        </Link>
 
         <div className="nav-section">
           <div className="site-nav-btns">
@@ -26,19 +26,34 @@ const Header = () => {
             <Link to="/comics" className="page-link">
               <span>Comics</span>
             </Link>
-            <Link to="/favoris" className="page-link">
+            <Link to="/favorites" className="page-link">
               <span>Favoris</span>
             </Link>
           </div>
         </div>
-        <div className="login-signup">
-          <Link to="user/signup" className="page-link">
-            <span>S'inscrire</span>
-          </Link>
-          <Link to="user/login" className="page-link">
-            <span>Se connecter</span>
-          </Link>
-        </div>
+        {token ? (
+          <div>
+            <Link to="/">
+              <button
+                className="deconnexion"
+                onClick={() => {
+                  handleToken(null);
+                }}
+              >
+                Deconnexion
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div className="login-signup">
+            <Link to="user/signup" className="page-link">
+              <span>S'inscrire</span>
+            </Link>
+            <Link to="user/login" className="page-link">
+              <span>Se connecter</span>
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );
