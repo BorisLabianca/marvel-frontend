@@ -26,6 +26,7 @@ library.add(faHeartCircleCheck, faHeartCirclePlus, faHeart);
 
 function App() {
   const [token, setToken] = useState();
+  // const [favComics, setFavComics] = useState([]);
   const handleToken = (token) => {
     if (token) {
       setToken(token);
@@ -35,6 +36,7 @@ function App() {
       Cookies.remove("token");
     }
   };
+
   return (
     <Router>
       <Header token={token} handleToken={handleToken} />

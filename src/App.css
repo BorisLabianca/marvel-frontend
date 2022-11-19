@@ -100,12 +100,38 @@ header .header-container .deconnexion {
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
-.search-bar-n-pagination .search-bar {
+.search-bar-n-pagination .autocomplete-toolbar {
+  display: flex;
+  flex-direction: column;
   width: 50%;
+  height: 100%;
+}
+.search-bar-n-pagination .autocomplete-toolbar .search-bar {
+  width: 100%;
   height: 70%;
   padding: 20px 0 20px 40px;
   box-sizing: border-box;
+}
+.search-bar-n-pagination .autocomplete-toolbar .autocomplete-suggestions {
+  z-index: 2;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px rgb(143, 143, 143);
+  padding: 15px 15px 15px 40px;
+  display: flex;
+  flex-direction: column;
+}
+.search-bar-n-pagination .autocomplete-toolbar .autocomplete-suggestions div {
+  line-height: 28px;
+}
+.search-bar-n-pagination
+  .autocomplete-toolbar
+  .autocomplete-suggestions
+  div:hover {
+  background-color: lightgray;
 }
 .search-bar-n-pagination .disabled {
   background-color: rgb(242, 242, 242);
@@ -173,7 +199,7 @@ header .header-container .deconnexion {
   color: red;
 }
 
-.character-card:active {
+.fav-relative:active {
   box-shadow: 1px 1px 1px black;
   transform: translateY(5px);
   transition: 0.2s;

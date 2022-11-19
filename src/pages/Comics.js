@@ -12,6 +12,7 @@ const Comics = () => {
   const [searchComic, setSearchComic] = useState("");
   const [limit, setLimit] = useState(100);
   const [skip, setSkip] = useState(0);
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     const fetchComics = async () => {
@@ -41,6 +42,9 @@ const Comics = () => {
         setLimit={setLimit}
         skip={skip}
         setSkip={setSkip}
+        data={comics.results}
+        suggestions={suggestions}
+        setSuggestions={setSuggestions}
       />
       <div className="card-container">
         {comics.results.map((comic) => {

@@ -6,18 +6,79 @@ const ToolBar = ({
   setLimit,
   skip,
   setSkip,
+  data,
+  suggestions,
+  setSuggestions,
 }) => {
+  const onSuggestHandler = (searchContent) => {
+    setSearchContent(searchContent);
+    setSuggestions([]);
+  };
   return (
     <div className="search-bar-n-pagination">
-      <input
-        type="text"
-        placeholder={placeholder}
-        value={searchContent}
-        className="search-bar"
-        onChange={(event) => {
-          setSearchContent(event.target.value);
-        }}
-      />
+      <div className="autocomplete-toolbar">
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={searchContent}
+          className="search-bar"
+          onChange={(event) => {
+            let matches = [];
+            if (searchContent.length > 0) {
+              matches = data.filter((item) => {
+                const regex = new RegExp(`${searchContent}`, "gi");
+                if (item.name) {
+                  return item.name.match(regex);
+                } else if (item.title) {
+                  return item.title.match(regex);
+                } else {
+                  return null;
+                }
+              });
+            }
+            // console.log("matches : ", matches);
+            setSuggestions(matches);
+            setSearchContent(event.target.value);
+          }}
+          onBlur={() => {
+            setTimeout(() => {
+              setSuggestions([]);
+            }, 100);
+          }}
+        />
+        {suggestions.length > 0 && (
+          <div className="autocomplete-suggestions">
+            {suggestions &&
+              suggestions.map((suggestion, index) => {
+                if (suggestion.title) {
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => {
+                        onSuggestHandler(suggestion.title);
+                      }}
+                    >
+                      {suggestion.title}
+                    </div>
+                  );
+                } else if (suggestion.name) {
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => {
+                        onSuggestHandler(suggestion.name);
+                      }}
+                    >
+                      {suggestion.name}
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+          </div>
+        )}
+      </div>
       <select
         name="limit"
         id="limit"

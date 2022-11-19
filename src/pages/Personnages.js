@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 import ToolBar from "../components/ToolBar";
 
-const Personnages = ({ token }) => {
+const Personnages = ({ token, setFavComics }) => {
   const [characters, setCharacters] = useState();
   const [loading, setLoading] = useState(true);
   const [searchCharacter, setSearchCharacter] = useState("");
   const [limit, setLimit] = useState(100);
   const [skip, setSkip] = useState(0);
+  const [suggestions, setSuggestions] = useState([]);
+
   // console.log(search);
 
   useEffect(() => {
@@ -43,6 +45,9 @@ const Personnages = ({ token }) => {
         setLimit={setLimit}
         skip={skip}
         setSkip={setSkip}
+        data={characters.results}
+        suggestions={suggestions}
+        setSuggestions={setSuggestions}
       />
 
       <div className="card-container">
