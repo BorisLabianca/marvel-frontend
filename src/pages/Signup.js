@@ -17,31 +17,33 @@ const Signup = ({ handleToken }) => {
     try {
       setErrorMessage("");
       if (!username) {
+        setErrorMessage("Veuillez entrer un nom d'utilisateur.");
         return;
-      }
-      if (!email) {
+      } else if (!email) {
+        setErrorMessage("Veuillez entrer une adresse e-mail.");
         return;
-      }
-      if (password !== confirmPassword) {
+      } else if (password !== confirmPassword) {
+        setErrorMessage("Vos mots de passe sont différents.");
         return;
-      }
-      const response = await axios.post("http://localhost:4000/user/signup", {
-        username: username,
-        email: email,
-        password: password,
-      });
-      //   console.log(response);
-      if (response.data.token) {
-        const token = response.data.token;
-        handleToken(token);
-        navigate("/");
+      } else {
+        const response = await axios.post("http://localhost:4000/user/signup", {
+          username: username,
+          email: email,
+          password: password,
+        });
+        //   console.log(response);
+        if (response.data.token) {
+          const token = response.data.token;
+          handleToken(token);
+          navigate("/");
 
-        // if (emailUsed) {
-        //   setEmailUsed(false);
-        // }
-        // if (usernameUsed) {
-        //   setUsernameUsed(false);
-        // }
+          // if (emailUsed) {
+          //   setEmailUsed(false);
+          // }
+          // if (usernameUsed) {
+          //   setUsernameUsed(false);
+          // }
+        }
       }
     } catch (error) {
       console.log(error.response.data);

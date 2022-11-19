@@ -36,36 +36,39 @@ header .top-logo {
 }
 header .header-container .nav-section {
   height: 100%;
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-header .header-container .nav-section .search {
-  width: 100%;
-  height: 60%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-header .header-container .nav-section .search input {
-  width: 80%;
-  height: 50%;
-}
+
 header .header-container .nav-section .site-nav-btns {
   width: 100%;
   height: 40%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+  box-sizing: border-box;
+  padding: 0 30px;
 }
 header .header-container .nav-section .site-nav-btns .page-link {
   color: white;
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 header .header-container .nav-section .site-nav-btns .captain-america {
   height: 50px;
+  object-fit: cover;
+}
+header .header-container .nav-section .site-nav-btns .comic-cover-nav {
+  height: 50px;
+  object-fit: cover;
+}
+header .header-container .nav-section .site-nav-btns .fav-icon-nav {
+  height: 30px;
   object-fit: cover;
 }
 header .header-container .login-signup {
@@ -79,6 +82,9 @@ header .header-container .login-signup .page-link {
   color: white;
   font-size: 20px;
 }
+header .header-container .logout-div {
+  width: 20%;
+}
 header .header-container .deconnexion {
   border: none;
   background-color: black;
@@ -87,7 +93,7 @@ header .header-container .deconnexion {
   cursor: pointer;
 }
 
-/* Barre de recherche */
+/* Composant toolbar */
 .search-bar-n-pagination {
   margin: 10px auto;
   max-width: 1220px;
@@ -108,6 +114,8 @@ header .header-container .deconnexion {
 .search-bar-n-pagination .disabled:active {
   background-color: rgb(242, 242, 242);
 }
+
+/* Pages personnages */
 .card-container {
   max-width: 1220px;
   display: flex;
@@ -115,7 +123,7 @@ header .header-container .deconnexion {
   margin: 0 auto;
   gap: 10px;
 }
-.character-card {
+.fav-relative {
   background-color: white;
   box-shadow: 5px 5px 10px grey;
   margin-top: 25px;
@@ -124,17 +132,45 @@ header .header-container .deconnexion {
   height: 420px;
   width: calc(100% / 4 - 30px / 4);
   display: flex;
-  flex-direction: column;
-  cursor: pointer;
   position: relative;
 }
-.fav {
+.character-card {
+  background-color: white;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+/* .character-card:hover {
+  transform: scale(1.5);
+  z-index: 1;
+}
+.character-card:hover .char-desc {
+  font-size: 11.5px;
+  transform: scale(1);
+} */
+.fav-btn {
   position: absolute;
+  top: 264px;
   left: 30px;
-  top: 310px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  filter: drop-shadow(1px 1px 2px black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fav {
   font-size: 24px;
-  color: white;
-  filter: drop-shadow(0px 0px 2px black);
+  color: red;
+}
+.add {
+  font-size: 24px;
+  color: red;
 }
 
 .character-card:active {
@@ -142,23 +178,39 @@ header .header-container .deconnexion {
   transform: translateY(5px);
   transition: 0.2s;
 }
-.character-card .profile-pic {
+.character-card .profile-pic-container {
   height: 70%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+.character-card .profile-pic-container .profile-pic {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  margin: 10px 0;
+  object-position: center;
+  overflow: hidden;
 }
 .character-card .char-name {
   font-size: 18px;
   font-weight: 700;
-  margin: 10px 0;
+  height: 10%;
 }
 .character-card .char-desc {
   width: 100%;
-  height: 15%;
+  height: 20%;
   overflow: hidden;
 }
-.comic-card {
+.character-card .desc-filler {
+  height: 20%;
+}
+
+/* Comics page */
+.fav-relative-comics {
+  position: relative;
   background-color: white;
   box-shadow: 5px 5px 10px grey;
   margin-top: 25px;
@@ -168,10 +220,29 @@ header .header-container .deconnexion {
   width: calc(100% / 4 - 30px / 4);
   display: flex;
   flex-direction: column;
+}
+.comic-card {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
 }
-
-.comic-card:active {
+.fav-comic-btn {
+  position: absolute;
+  top: 264px;
+  left: 30px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  filter: drop-shadow(1px 1px 2px black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fav-relative-comics:active {
   box-shadow: 1px 1px 1px black;
   transform: translateY(5px);
   transition: 0.2s;

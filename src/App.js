@@ -20,8 +20,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faHeartCirclePlus,
   faHeartCircleCheck,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faHeartCircleCheck, faHeartCirclePlus);
+library.add(faHeartCircleCheck, faHeartCirclePlus, faHeart);
 
 function App() {
   const [token, setToken] = useState();
@@ -38,7 +39,7 @@ function App() {
     <Router>
       <Header token={token} handleToken={handleToken} />
       <Routes>
-        <Route path="/" element={<Personnages />} />
+        <Route path="/" element={<Personnages token={token} />} />
         <Route path="/personnage/:id" element={<Personnage />} />
         <Route path="/comics" element={<Comics />} />
         <Route path="/comic/:id" element={<Comic />} />

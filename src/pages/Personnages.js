@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 import ToolBar from "../components/ToolBar";
 
-const Personnages = () => {
+const Personnages = ({ token }) => {
   const [characters, setCharacters] = useState();
   const [loading, setLoading] = useState(true);
   const [searchCharacter, setSearchCharacter] = useState("");
@@ -48,7 +48,13 @@ const Personnages = () => {
       <div className="card-container">
         {characters.results.map((character) => {
           // console.log(character);
-          return <CharacterCard key={character._id} character={character} />;
+          return (
+            <CharacterCard
+              key={character._id}
+              character={character}
+              token={token}
+            />
+          );
         })}
       </div>
     </div>

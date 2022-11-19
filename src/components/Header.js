@@ -1,9 +1,11 @@
 // Import des dépendances
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// Import du logo
+// Import des png
 import logoMarvel from "../assets/images/marvel_logo.png";
 import captainAmerica from "../assets/images/captain_america.png";
+import comicCover from "../assets/images/marvel_cover.png";
 
 const Header = ({ token, handleToken }) => {
   return (
@@ -15,24 +17,34 @@ const Header = ({ token, handleToken }) => {
 
         <div className="nav-section">
           <div className="site-nav-btns">
-            <img
-              src={captainAmerica}
-              alt="Captain America"
-              className="captain-america"
-            />
             <Link to="/" className="page-link">
+              <img
+                src={captainAmerica}
+                alt="Captain America"
+                className="captain-america"
+              />
               <span>Personnages</span>
             </Link>
             <Link to="/comics" className="page-link">
+              <img
+                src={comicCover}
+                alt="Cover of a comic"
+                className="comic-cover-nav"
+              />
               <span>Comics</span>
             </Link>
-            <Link to="/favorites" className="page-link">
+            <Link
+              to={token ? "/favorites" : "/user/login"}
+              state={{ previousUrl: "/favorites" }}
+              className="page-link"
+            >
+              <FontAwesomeIcon icon="fa-heart" className="fav-icon-nav" />
               <span>Favoris</span>
             </Link>
           </div>
         </div>
         {token ? (
-          <div>
+          <div className="logout-div">
             <Link to="/">
               <button
                 className="deconnexion"
