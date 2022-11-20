@@ -73,10 +73,11 @@ const Signup = ({ handleToken, handleAccountName, handleAvatar }) => {
     <form className="signup-form" onSubmit={handleSubmit}>
       <img
         src="https://res.cloudinary.com/dbe27rnpk/image/upload/v1668722315/Marvel/captain_america_fzhlbi.jpg"
-        alt=""
+        alt="Captain America"
+        className="i-want-you"
       />
       <div className="signup-info">
-        <h1>Rejoinez l'équipe de vos super héros !</h1>
+        <h1 className="signup-title">Rejoinez l'équipe de vos super héros !</h1>
         <input
           type="file"
           onChange={(event) => {
@@ -126,7 +127,7 @@ const Signup = ({ handleToken, handleAccountName, handleAvatar }) => {
             setConfirmPassword(event.target.value);
           }}
         />
-        <input type="submit" value="Join me!"></input>
+        <input type="submit" value="Join me!" className="signup-btn"></input>
       </div>
     </form>
   );

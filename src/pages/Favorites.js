@@ -1,3 +1,5 @@
+import { Navigate } from "react-router-dom";
+
 const Favorites = ({ token }) => {
   const favComics = localStorage.getItem("favComics");
   const favCharacters = localStorage.getItem("favCharacters");
@@ -6,16 +8,16 @@ const Favorites = ({ token }) => {
   const onImageError = (event) => {
     event.target.src = placeholderImage;
   };
-  return (
-    <div>
+  return token ? (
+    <div className="favorites-all">
       <div className="favorite-comics">
-        <h1>Mes comics favoris</h1>
+        <h1 className="favorites-title">Mes comics favoris</h1>
         {favComics ? (
           JSON.parse(favComics).map((favComic) => {
             // console.log(favComic);
             return (
               <div key={favComic._id}>
-                <div>{favComic.title}</div>
+                <div className="favorite-title">{favComic.title}</div>
                 <div>
                   <img
                     src={
@@ -37,14 +39,14 @@ const Favorites = ({ token }) => {
         ) : (
           <div>Vous n'avez pas encore de comics dans vos favoris.</div>
         )}
-      </div>{" "}
+      </div>
       <div className="favorite-characters">
-        <h1>Mes personnages favoris</h1>
+        <h1 className="favorites-title">Mes personnages favoris</h1>
         {favCharacters ? (
           JSON.parse(favCharacters).map((favCharacter) => {
             return (
               <div key={favCharacter._id}>
-                <div>{favCharacter.name}</div>
+                <div className="favorite-title">{favCharacter.name}</div>
                 <div>
                   <img
                     src={
@@ -68,6 +70,8 @@ const Favorites = ({ token }) => {
         )}
       </div>
     </div>
+  ) : (
+    <Navigate to="/user/login" state={{ previousUrl: "/favorites" }} />
   );
 };
 

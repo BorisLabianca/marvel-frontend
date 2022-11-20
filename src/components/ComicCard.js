@@ -26,8 +26,13 @@ const ComicCard = ({ comic, token, addComicToFavorites }) => {
           onError={onImageError}
           className="comic-cover"
         />
-
-        <div className="comic-desc">{comic.description}</div>
+        {comic.description ? (
+          <div className="comic-desc">{comic.description}</div>
+        ) : (
+          <span>
+            Désolé, nous n'avons pas de description disponible pour ce comic. 🙏
+          </span>
+        )}
       </Link>
 
       <div className="fav-comic-btn">

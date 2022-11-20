@@ -46,27 +46,28 @@ const Login = ({ handleToken, handleAccountName, handleAvatar }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Connectez-vous</h1>
-      <input
-        type="email"
-        placeholder="captain.america@avengers.com"
-        value={email}
-        onChange={(event) => {
-          setEmail(event.target.value);
-        }}
-      />
-      {errorMessage ? <p>{errorMessage}</p> : null}
-      <input
-        type="password"
-        placeholder="captain.america@avengers.com"
-        value={password}
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
-      />
-
-      <input type="submit" value="Suit up!" />
+    <form onSubmit={handleSubmit} className="login-form">
+      <div className="login-info">
+        <h1 className="login-title">Connectez-vous</h1>
+        <input
+          type="email"
+          placeholder="captain.america@avengers.com"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
+        {errorMessage ? <p>{errorMessage}</p> : null}
+        <input
+          type="password"
+          placeholder="captain.america@avengers.com"
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+        />
+        <input type="submit" value="Suit up!" className="login-btn" />
+      </div>
     </form>
   );
 };

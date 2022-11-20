@@ -9,8 +9,8 @@ const CharacterAppearsIn = ({ apparition }) => {
   };
 
   return (
-    <Link to={`/comic/${apparition._id}`}>
-      <h2>{apparition.title}</h2>
+    <Link to={`/comic/${apparition._id}`} className="appearing-comic">
+      <h2 className="appears-in-title">{apparition.title}</h2>
       <img
         src={
           apparition.thumbnail.path ===
@@ -20,6 +20,7 @@ const CharacterAppearsIn = ({ apparition }) => {
         }
         alt={"Titre :" + apparition.title}
         onError={onImageError}
+        className="char-appears-in-cover"
       />
     </Link>
   );

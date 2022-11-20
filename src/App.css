@@ -324,6 +324,56 @@ header .header-container .deconnexion {
   height: 20%;
 }
 
+/* Page d'un personnage */
+
+.single-char-container {
+  margin: 0 auto;
+  max-width: 1220px;
+  padding-top: 50px;
+  display: flex;
+}
+.single-char-info {
+  display: flex;
+  flex-direction: column;
+  border-right: 3px solid black;
+  width: 25%;
+  padding: 0 15px 0 0;
+}
+.single-char-name {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.character-profile-pic {
+  width: 200px;
+  margin-bottom: 30px;
+}
+.single-char-desc {
+  font-size: 20px;
+  text-align: justify;
+}
+.appearing-comics {
+  width: 75%;
+  padding-left: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.appearing-comic {
+  width: calc(100% / 3 - 30px / 3);
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.appears-in-title {
+  font-size: 24px;
+  font-weight: 700;
+  height: 20%;
+}
+.char-appears-in-cover {
+  width: 100%;
+}
 /* Comics page */
 .fav-relative-comics {
   position: relative;
@@ -380,13 +430,114 @@ header .header-container .deconnexion {
   overflow: hidden;
 }
 
+/* Page de présentation d'un seul comic */
+.single-comic-container {
+  display: flex;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.single-comic-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+.single-comic-desc {
+  font-size: 24px;
+  margin-right: 50px;
+  text-align: justify;
+}
+
+/* Favorites */
+.favorites-all {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 60px;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.favorites-all img {
+  height: 150px;
+  margin-bottom: 30px;
+}
+.favorites-title {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+.favorite-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 /* Signup page */
 .signup-form {
   display: flex;
   gap: 50px;
   margin-top: 30px;
+  height: 100%;
+}
+.i-want-you {
+  height: 100%;
 }
 .signup-form .signup-info {
   display: flex;
   flex-direction: column;
+  gap: 30px;
+}
+.signup-form .signup-info input {
+  height: 30px;
+}
+.signup-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.signup-form .signup-info .signup-btn {
+  border: none;
+  background-color: none;
+  background: none;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  height: 35px;
+  font-size: 20px;
+  padding: 5px;
+}
+
+/* Login page */
+.login-form {
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+  height: 100%;
+  justify-content: center;
+}
+.login-form .login-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.login-form .login-info input {
+  height: 30px;
+  width: 300px;
+  box-sizing: border-box;
+}
+.login-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.login-form .login-info .login-btn {
+  border: none;
+  background-color: none;
+  background: none;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  height: 35px;
+  width: 300px;
+  font-size: 20px;
+  padding: 5px;
 }

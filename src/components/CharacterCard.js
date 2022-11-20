@@ -28,7 +28,10 @@ const CharacterCard = ({ character, token, addCharacterToFavorites }) => {
         {character.description ? (
           <div className="char-desc">{character.description}</div>
         ) : (
-          <div className="desc-filler"></div>
+          <div className="desc-filler">
+            Désolé, nous n'avons pas de description disponible pour ce
+            personnage. 🙏
+          </div>
         )}
       </Link>
       <div className="fav-btn">

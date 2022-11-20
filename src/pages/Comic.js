@@ -29,8 +29,18 @@ const Comic = () => {
   return loading ? (
     <Loader statement={"Nous cherchons dans les tiroirs."} />
   ) : (
-    <div>
-      <h1>{comic.title}</h1>
+    <div className="single-comic-container">
+      <div className="single-comic-desc">
+        <h1 className="single-comic-title">{comic.title}</h1>
+        {comic.description ? (
+          <div className="single-comic-desc">{comic.description}</div>
+        ) : (
+          <span className="single-comic-desc">
+            Désolé, nous n'avons pas de description disponible pour ce comic. 🙏
+          </span>
+        )}
+      </div>
+
       <img
         src={
           comic.thumbnail.path ===
@@ -40,13 +50,6 @@ const Comic = () => {
         }
         alt={"Titre :" + comic.title}
       />
-      {comic.description ? (
-        <div>{comic.description}</div>
-      ) : (
-        <span>
-          Désolé, nous n'avons pas de description disponible pour ce comic. 🙏
-        </span>
-      )}
     </div>
   );
 };
