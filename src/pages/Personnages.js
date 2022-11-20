@@ -27,7 +27,7 @@ const Personnages = ({ token, addCharacterToFavorites }) => {
         setCharacters(response.data);
         setTimeout(() => {
           setLoading(false);
-        }, 200);
+        }, 300);
         // console.log(characters.results);
       } catch (error) {
         console.log(error.response);

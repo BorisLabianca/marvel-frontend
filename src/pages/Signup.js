@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Signup = ({ handleToken }) => {
+const Signup = ({ handleToken, handleAccountName, handleAvatar }) => {
+  const [avatar, setAvatar] = useState();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,15 +27,23 @@ const Signup = ({ handleToken }) => {
         setErrorMessage("Vos mots de passe sont différents.");
         return;
       } else {
-        const response = await axios.post("http://localhost:4000/user/signup", {
-          username: username,
-          email: email,
-          password: password,
-        });
-        //   console.log(response);
+        const formData = new FormData();
+        formData.append("avatar", avatar);
+        formData.append("username", username);
+        formData.append("email", email);
+        formData.append("password", password);
+        const response = await axios.post(
+          "http://localhost:4000/user/signup",
+          formData
+        );
+        console.log(response.data);
         if (response.data.token) {
           const token = response.data.token;
+          const accountName = response.data.username;
+          const avatar = response.data.avatar;
           handleToken(token);
+          handleAccountName(accountName);
+          handleAvatar(avatar);
           navigate("/");
 
           // if (emailUsed) {
@@ -68,9 +77,12 @@ const Signup = ({ handleToken }) => {
       />
       <div className="signup-info">
         <h1>Rejoinez l'équipe de vos super héros !</h1>
-        {/* {usernameUsed ? (
-          <p>Il y a déjà un héro / une héroïne qui porte ce nom 🦸‍♂️🦸🏻‍♀️</p>
-        ) : null} */}
+        <input
+          type="file"
+          onChange={(event) => {
+            setAvatar(event.target.files[0]);
+          }}
+        />
         <input
           type="text"
           placeholder="Cap'"

@@ -84,6 +84,13 @@ header .header-container .login-signup .page-link {
 }
 header .header-container .logout-div {
   width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .logout-div .account-name {
+  color: #ffffff;
+  font-size: 20px;
 }
 header .header-container .deconnexion {
   border: none;
@@ -113,19 +120,48 @@ header .header-container .deconnexion {
 .thor {
   height: 300px;
   position: absolute;
-  top: 150px;
-  left: 50px;
+  animation: thor 1s ease-in-out;
 }
 .cap {
   height: 300px;
   position: absolute;
-  top: 150px;
-  right: 50px;
+
+  animation: cap 1s ease-in-out;
 }
 .iron-man {
   height: 300px;
   position: absolute;
-  top: 10px;
+  animation: iron-man 1s ease-in-out;
+}
+@keyframes thor {
+  0% {
+    bottom: 50px;
+    left: 0px;
+  }
+  100% {
+    bottom: 250px;
+    left: 500px;
+  }
+}
+@keyframes cap {
+  0% {
+    top: 150px;
+    right: 0px;
+  }
+  100% {
+    top: 150px;
+    right: 500px;
+  }
+}
+@keyframes iron-man {
+  0% {
+    top: 0px;
+    left: 100px;
+  }
+  100% {
+    top: 80px;
+    left: 700px;
+  }
 }
 
 /* Composant toolbar */

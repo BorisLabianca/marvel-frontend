@@ -18,7 +18,7 @@ const Comic = () => {
         setComic(response.data);
         setTimeout(() => {
           setLoading(false);
-        }, 200);
+        }, 300);
       } catch (error) {
         console.log(error.response);
       }

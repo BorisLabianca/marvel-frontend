@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ handleToken }) => {
+const Login = ({ handleToken, handleAccountName }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
@@ -26,7 +26,9 @@ const Login = ({ handleToken }) => {
         });
         if (response.data.token) {
           const token = response.data.token;
+          const accountName = response.data.username;
           handleToken(token);
+          handleAccountName(accountName);
           if (location.state?.previousUrl) {
             navigate(location.state.previousUrl);
           } else {
@@ -36,6 +38,9 @@ const Login = ({ handleToken }) => {
       }
     } catch (error) {
       console.log(error.response.data);
+      if (error.response?.data.message === "Unauthorized.") {
+        setErrorMessage("Mauvaise combinaison mot de passe / e-mail 🦹‍♀️🦹🏻‍♂️");
+      }
     }
   };
   return (
@@ -58,6 +63,7 @@ const Login = ({ handleToken }) => {
           setPassword(event.target.value);
         }}
       />
+
       <input type="submit" value="Suit up!" />
     </form>
   );

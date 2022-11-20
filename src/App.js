@@ -26,6 +26,11 @@ library.add(faHeartCircleCheck, faHeartCirclePlus, faHeart);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [account, setAccount] = useState(Cookies.get("accountName") || "");
+  const [avatar, setAvatar] = useState(
+    Cookies.get("avatar") ||
+      "https://res.cloudinary.com/dbe27rnpk/image/upload/v1668681474/Marvel/super_hero_filler_a22i0y.png"
+  );
   const [favComics, setFavComics] = useState([]);
   const [favChars, setFavChars] = useState([]);
   const handleToken = (token) => {
@@ -35,6 +40,24 @@ function App() {
     } else {
       setToken(null);
       Cookies.remove("token");
+    }
+  };
+  const handleAccountName = (accountName) => {
+    if (accountName) {
+      setAccount(accountName);
+      Cookies.set("accountName", accountName, { expires: 7 });
+    } else {
+      setAccount("");
+      Cookies.remove("accountName");
+    }
+  };
+
+  const handleAvatar = (avatar) => {
+    if (avatar) {
+      setAvatar(avatar);
+      Cookies.set("avatar", avatar, { expires: 7 });
+    } else {
+      Cookies.remove("avatar");
     }
   };
   const addComicToFavorites = (comic) => {
@@ -52,7 +75,12 @@ function App() {
 
   return (
     <Router>
-      <Header token={token} handleToken={handleToken} />
+      <Header
+        token={token}
+        handleToken={handleToken}
+        account={account}
+        avatar={avatar}
+      />
       <Routes>
         <Route
           path="/"
@@ -77,11 +105,23 @@ function App() {
         />
         <Route
           path="/user/signup"
-          element={<Signup handleToken={handleToken} />}
+          element={
+            <Signup
+              handleToken={handleToken}
+              handleAccountName={handleAccountName}
+              handleAvatar={handleAvatar}
+            />
+          }
         />
         <Route
           path="/user/login"
-          element={<Login handleToken={handleToken} />}
+          element={
+            <Login
+              handleToken={handleToken}
+              handleAccountName={handleAccountName}
+              handleAvatar={handleAvatar}
+            />
+          }
         />
       </Routes>
     </Router>
