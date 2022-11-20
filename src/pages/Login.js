@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ handleToken, handleAccountName }) => {
+const Login = ({ handleToken, handleAccountName, handleAvatar }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
@@ -27,8 +27,10 @@ const Login = ({ handleToken, handleAccountName }) => {
         if (response.data.token) {
           const token = response.data.token;
           const accountName = response.data.username;
+          const avatar = response.data.avatar;
           handleToken(token);
           handleAccountName(accountName);
+          handleAvatar(avatar);
           if (location.state?.previousUrl) {
             navigate(location.state.previousUrl);
           } else {

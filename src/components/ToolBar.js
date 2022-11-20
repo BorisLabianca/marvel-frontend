@@ -7,6 +7,7 @@ const ToolBar = ({
   skip,
   setSkip,
   data,
+  count,
   suggestions,
   setSuggestions,
 }) => {
@@ -14,6 +15,7 @@ const ToolBar = ({
     setSearchContent(searchContent);
     setSuggestions([]);
   };
+  // console.log(count);
   return (
     <div className="search-bar-n-pagination">
       <div className="autocomplete-toolbar">
@@ -39,6 +41,7 @@ const ToolBar = ({
             // console.log("matches : ", matches);
             setSuggestions(matches);
             setSearchContent(event.target.value);
+            setSkip(0);
           }}
           onBlur={() => {
             setTimeout(() => {
@@ -79,39 +82,50 @@ const ToolBar = ({
           </div>
         )}
       </div>
-      <select
-        name="limit"
-        id="limit"
-        onChange={(event) => {
-          setLimit(Number(event.target.value));
-          setSkip(0);
-        }}
-      >
-        <option value={0}>--</option>
-        <option value={5}>5</option>
-        <option value={10}>10</option>
-        <option value={25}>25</option>
-        <option value={50}>50</option>
-        <option value={100}>100</option>
-      </select>
-      <button
-        onClick={() => {
-          skip !== 0 && setSkip(Number(skip) - Number(limit));
-          //   console.log(typeof skip, typeof limit);
-        }}
-        className={skip === 0 ? "disabled" : ""}
-      >
-        Previous
-      </button>
-      <span>1</span>
-      <button
-        onClick={() => {
-          setSkip(Number(skip) + Number(limit));
-          //   console.log(typeof skip, typeof limit);
-        }}
-      >
-        Next
-      </button>
+      <div className="items-per-page">
+        <div>Nombre par page</div>
+        <div>
+          <select
+            name="limit"
+            id="limit"
+            onChange={(event) => {
+              setLimit(Number(event.target.value));
+              setSkip(0);
+            }}
+          >
+            <option value={0}>--</option>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
+        </div>
+      </div>
+      <div className="page-nav">
+        <button
+          onClick={() => {
+            skip !== 0 && setSkip(Number(skip) - Number(limit));
+            //   console.log(typeof skip, typeof limit);
+          }}
+          className={skip === 0 ? "disabled" : ""}
+        >
+          Previous
+        </button>
+        <span>
+          {Number(skip) / Number(limit) + 1}/{Math.ceil(count / limit)}
+        </span>
+        <button
+          onClick={() => {
+            Number(count) - Number(skip) > limit &&
+              setSkip(Number(skip) + Number(limit));
+            //   console.log(typeof skip, typeof limit);
+          }}
+          className={Number(count) - Number(skip) < limit ? "disabled" : ""}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

@@ -31,8 +31,12 @@ function App() {
     Cookies.get("avatar") ||
       "https://res.cloudinary.com/dbe27rnpk/image/upload/v1668681474/Marvel/super_hero_filler_a22i0y.png"
   );
-  const [favComics, setFavComics] = useState([]);
-  const [favChars, setFavChars] = useState([]);
+  const [favComics, setFavComics] = useState(
+    JSON.parse(localStorage.getItem("favComics")) || []
+  );
+  const [favChars, setFavChars] = useState(
+    JSON.parse(localStorage.getItem("favCharacters")) || []
+  );
   const handleToken = (token) => {
     if (token) {
       setToken(token);
@@ -60,17 +64,31 @@ function App() {
       Cookies.remove("avatar");
     }
   };
+
   const addComicToFavorites = (comic) => {
     const newFav = [...favComics];
-    newFav.push(comic);
-    setFavComics(newFav);
-    localStorage.setItem("favComics", JSON.stringify(newFav));
+    const favComicExists = newFav.find((elem) => elem._id === comic._id);
+    if (favComicExists) {
+      return;
+    } else {
+      newFav.push(comic);
+      setFavComics(newFav);
+      localStorage.setItem("favComics", JSON.stringify(newFav));
+    }
   };
+
   const addCharacterToFavorites = (character) => {
     const newFav = [...favChars];
-    newFav.push(character);
-    setFavChars(newFav);
-    localStorage.setItem("favCharacters", JSON.stringify(newFav));
+    const favCharacterExists = newFav.find(
+      (elem) => elem._id === character._id
+    );
+    if (favCharacterExists) {
+      return;
+    } else {
+      newFav.push(character);
+      setFavChars(newFav);
+      localStorage.setItem("favCharacters", JSON.stringify(newFav));
+    }
   };
 
   return (

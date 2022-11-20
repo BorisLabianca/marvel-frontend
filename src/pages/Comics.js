@@ -46,6 +46,7 @@ const Comics = ({ addComicToFavorites, token }) => {
         skip={skip}
         setSkip={setSkip}
         data={comics.results}
+        count={comics.count}
         suggestions={suggestions}
         setSuggestions={setSuggestions}
       />

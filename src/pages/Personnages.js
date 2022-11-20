@@ -49,6 +49,7 @@ const Personnages = ({ token, addCharacterToFavorites }) => {
         skip={skip}
         setSkip={setSkip}
         data={characters.results}
+        count={characters.count}
         suggestions={suggestions}
         setSuggestions={setSuggestions}
       />

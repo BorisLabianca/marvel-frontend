@@ -36,7 +36,7 @@ const Signup = ({ handleToken, handleAccountName, handleAvatar }) => {
           "http://localhost:4000/user/signup",
           formData
         );
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.token) {
           const token = response.data.token;
           const accountName = response.data.username;

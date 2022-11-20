@@ -7,8 +7,8 @@ import logoMarvel from "../assets/images/marvel_logo.png";
 import captainAmerica from "../assets/images/captain_america.png";
 import comicCover from "../assets/images/marvel_cover.png";
 
-const Header = ({ token, handleToken, account }) => {
-  console.log(account);
+const Header = ({ token, handleToken, account, avatar }) => {
+  // console.log(account);
   return (
     <header>
       <div className="header-container">
@@ -46,8 +46,8 @@ const Header = ({ token, handleToken, account }) => {
         </div>
         {token ? (
           <div className="logout-div">
-            <img src="" alt="" />
             <div className="account-name">{account}</div>
+            <img src={avatar} alt="User avatar" className="user-avatar" />
             <Link to="/">
               <button
                 className="deconnexion"
