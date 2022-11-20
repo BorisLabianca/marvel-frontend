@@ -16,7 +16,9 @@ const Personnage = () => {
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/comics/${id}`);
+        const response = await axios.get(
+          `https://site--marvel-backend--67k4ycyfnl9b.code.run/comics/${id}`
+        );
 
         // await axios.get(
         //   `http://localhost:4000/personnage/${id}`

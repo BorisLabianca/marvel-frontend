@@ -19,7 +19,7 @@ const Comics = ({ addComicToFavorites, token }) => {
     const fetchComics = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/comics?title=${searchComic}&skip=${skip}&limit=${limit}`
+          `https://site--marvel-backend--67k4ycyfnl9b.code.run/comics?title=${searchComic}&skip=${skip}&limit=${limit}`
         );
         setComics(response.data);
         setTimeout(() => {

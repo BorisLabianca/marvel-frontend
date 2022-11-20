@@ -20,10 +20,13 @@ const Login = ({ handleToken, handleAccountName, handleAvatar }) => {
         );
         return;
       } else {
-        const response = await axios.post("http://localhost:4000/user/login", {
-          email: email,
-          password: password,
-        });
+        const response = await axios.post(
+          "https://site--marvel-backend--67k4ycyfnl9b.code.run/user/login",
+          {
+            email: email,
+            password: password,
+          }
+        );
         if (response.data.token) {
           const token = response.data.token;
           const accountName = response.data.username;

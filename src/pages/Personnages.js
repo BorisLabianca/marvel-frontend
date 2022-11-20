@@ -21,7 +21,7 @@ const Personnages = ({ token, addCharacterToFavorites }) => {
     const fetchCharacters = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/personnages?name=${searchCharacter}&skip=${skip}&limit=${limit}`
+          `https://site--marvel-backend--67k4ycyfnl9b.code.run/personnages?name=${searchCharacter}&skip=${skip}&limit=${limit}`
         );
         // console.log(response.data.results);
         setCharacters(response.data);

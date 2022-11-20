@@ -33,7 +33,7 @@ const Signup = ({ handleToken, handleAccountName, handleAvatar }) => {
         formData.append("email", email);
         formData.append("password", password);
         const response = await axios.post(
-          "http://localhost:4000/user/signup",
+          "https://site--marvel-backend--67k4ycyfnl9b.code.run/user/signup",
           formData
         );
         // console.log(response.data);
