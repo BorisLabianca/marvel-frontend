@@ -92,6 +92,41 @@ header .header-container .deconnexion {
   font-size: 20px;
   cursor: pointer;
 }
+/* Composant laoder */
+.loader {
+  height: calc(100vh - 100px);
+  width: 100vw;
+  background-color: black;
+}
+.loader-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader p {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+.thor {
+  height: 300px;
+  position: absolute;
+  top: 150px;
+  left: 50px;
+}
+.cap {
+  height: 300px;
+  position: absolute;
+  top: 150px;
+  right: 50px;
+}
+.iron-man {
+  height: 300px;
+  position: absolute;
+  top: 10px;
+}
 
 /* Composant toolbar */
 .search-bar-n-pagination {

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 // Import des composants
 import CharacterCard from "../components/CharacterCard";
 import ToolBar from "../components/ToolBar";
+import Loader from "../components/Loader";
 
 const Personnages = ({ token, addCharacterToFavorites }) => {
   const [characters, setCharacters] = useState();
@@ -24,7 +25,9 @@ const Personnages = ({ token, addCharacterToFavorites }) => {
         );
         // console.log(response.data.results);
         setCharacters(response.data);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 200);
         // console.log(characters.results);
       } catch (error) {
         console.log(error.response);
@@ -34,7 +37,7 @@ const Personnages = ({ token, addCharacterToFavorites }) => {
   }, [searchCharacter, skip, limit]);
 
   return loading ? (
-    <span>Vos héros se réunissent</span>
+    <Loader statement={"Vos héros se réunissent."} />
   ) : (
     <div>
       <ToolBar

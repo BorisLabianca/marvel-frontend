@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 // Import des composants
 import ComicCard from "../components/ComicCard";
 import ToolBar from "../components/ToolBar";
+import Loader from "../components/Loader";
 
 const Comics = ({ addComicToFavorites, token }) => {
   const [comics, setComics] = useState();
@@ -21,7 +22,9 @@ const Comics = ({ addComicToFavorites, token }) => {
           `http://localhost:4000/comics?title=${searchComic}&skip=${skip}&limit=${limit}`
         );
         setComics(response.data);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 200);
       } catch (error) {
         console.log(error.response);
       }
@@ -31,7 +34,7 @@ const Comics = ({ addComicToFavorites, token }) => {
   }, [searchComic, skip, limit]);
 
   return loading ? (
-    <span>Nous faisons le tri dans les boîtes</span>
+    <Loader statement={"Nous cherchons dans nos boîtes."} />
   ) : (
     <div>
       <ToolBar

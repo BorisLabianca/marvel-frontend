@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// Imports de composants
+import Loader from "../components/Loader";
+
 const Comic = () => {
   const { id } = useParams();
   const [comic, setComic] = useState();
@@ -13,7 +16,9 @@ const Comic = () => {
       try {
         const response = await axios.get(`http://localhost:4000/comic/${id}`);
         setComic(response.data);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 200);
       } catch (error) {
         console.log(error.response);
       }
@@ -22,7 +27,7 @@ const Comic = () => {
   }, [id]);
 
   return loading ? (
-    <div>Votre comic est en cours d'impression</div>
+    <Loader statement={"Nous cherchons dans les tiroirs."} />
   ) : (
     <div>
       <h1>{comic.title}</h1>

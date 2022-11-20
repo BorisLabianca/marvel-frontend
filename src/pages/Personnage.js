@@ -5,6 +5,7 @@ import axios from "axios";
 
 // Import des composants
 import CharacterAppearsIn from "../components/CharacterAppearsIn";
+import Loader from "../components/Loader";
 
 const Personnage = () => {
   const { id } = useParams();
@@ -29,7 +30,9 @@ const Personnage = () => {
         // // console.log("responde.data", response.data);
         // // console.log(appearsInResponse.data);
         // setAppearsIn(appearsInResponse.data);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 200);
       } catch (error) {
         console.log(error.response);
       }
@@ -38,7 +41,7 @@ const Personnage = () => {
   }, [id]);
 
   return loading ? (
-    <div>Votre héro s'habille</div>
+    <Loader statement={"Votre héro arrive."} />
   ) : (
     <div>
       <h1>{character.name}</h1>
