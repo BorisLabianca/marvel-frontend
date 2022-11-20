@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 import ToolBar from "../components/ToolBar";
 
-const Personnages = ({ token, setFavComics }) => {
+const Personnages = ({ token, addCharacterToFavorites }) => {
   const [characters, setCharacters] = useState();
   const [loading, setLoading] = useState(true);
   const [searchCharacter, setSearchCharacter] = useState("");
@@ -58,6 +58,7 @@ const Personnages = ({ token, setFavComics }) => {
               key={character._id}
               character={character}
               token={token}
+              addCharacterToFavorites={addCharacterToFavorites}
             />
           );
         })}

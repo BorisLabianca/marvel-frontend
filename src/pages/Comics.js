@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import ComicCard from "../components/ComicCard";
 import ToolBar from "../components/ToolBar";
 
-const Comics = () => {
+const Comics = ({ addComicToFavorites, token }) => {
   const [comics, setComics] = useState();
   const [loading, setLoading] = useState(true);
   const [searchComic, setSearchComic] = useState("");
@@ -48,7 +48,14 @@ const Comics = () => {
       />
       <div className="card-container">
         {comics.results.map((comic) => {
-          return <ComicCard key={comic._id} comic={comic} />;
+          return (
+            <ComicCard
+              key={comic._id}
+              comic={comic}
+              addComicToFavorites={addComicToFavorites}
+              token={token}
+            />
+          );
         })}
       </div>
     </div>

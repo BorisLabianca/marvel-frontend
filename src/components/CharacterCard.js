@@ -1,11 +1,10 @@
 // Import des dépendances
-import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { useState } from "react";
 
-const CharacterCard = ({ character, token }) => {
-  // const navigate = useNavigate();
-  // const [favChar, setFavChar] = useState([]);
+const CharacterCard = ({ character, token, addCharacterToFavorites }) => {
+  const navigate = useNavigate();
   // console.log(character._id);
   return (
     <div className="fav-relative">
@@ -32,18 +31,18 @@ const CharacterCard = ({ character, token }) => {
           <div className="desc-filler"></div>
         )}
       </Link>
-      {/* <div className="fav-btn">
+      <div className="fav-btn">
         <FontAwesomeIcon
           icon="fa-heart-circle-plus"
           className="add"
           onClick={() => {
             token
-              ? setFavChar(character)
+              ? addCharacterToFavorites(character)
               : navigate("/user/login", { state: { previousUrl: "/" } });
           }}
         />
-        {<FontAwesomeIcon icon="fa-heart-circle-check" className="fav" />}
-      </div> */}
+        {/* {<FontAwesomeIcon icon="fa-heart-circle-check" className="fav" />} */}
+      </div>
     </div>
   );
 };

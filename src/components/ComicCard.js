@@ -1,11 +1,11 @@
 // Import des dépendances
-import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { useState } from "react";
 // import Cookies from "js-cookie";
 
-const ComicCard = ({ comic, token }) => {
-  // const navigate = useNavigate();
+const ComicCard = ({ comic, token, addComicToFavorites }) => {
+  const navigate = useNavigate();
   const placeholderImage =
     "https://res.cloudinary.com/dbe27rnpk/image/upload/v1668682580/Marvel/cartoon-comic-pop-art-cover-background-template_530597-495_v4t5nz.webp";
   const onImageError = (event) => {
@@ -29,11 +29,22 @@ const ComicCard = ({ comic, token }) => {
 
         <div className="comic-desc">{comic.description}</div>
       </Link>
-      {/* <div className="fav-comic-btn">
-        <FontAwesomeIcon icon="fa-heart-circle-check" className="fav" />
 
-        <FontAwesomeIcon icon="fa-heart-circle-plus" className="add" />
-      </div> */}
+      <div className="fav-comic-btn">
+        {/* <FontAwesomeIcon icon="fa-heart-circle-check" className="fav" /> */}
+
+        <FontAwesomeIcon
+          icon="fa-heart-circle-plus"
+          className="add"
+          onClick={() => {
+            token
+              ? addComicToFavorites(comic)
+              : navigate("/user/login", {
+                  state: { previousUrl: "/comics" },
+                });
+          }}
+        />
+      </div>
     </div>
   );
 };
