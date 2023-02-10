@@ -1,7 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Kalam", cursive;
   background-color: white;
+  width: 100%;
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
@@ -237,18 +243,34 @@ header .header-container .deconnexion {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  gap: 10px;
+  gap: 20px;
 }
 .fav-relative {
   background-color: white;
-  box-shadow: 5px 5px 10px grey;
+  /* box-shadow: 5px 5px 10px grey; */
   margin-top: 25px;
   padding: 20px;
   box-sizing: border-box;
   height: 420px;
-  width: calc(100% / 4 - 30px / 4);
+  width: calc(100% / 4 - 60px / 4);
   display: flex;
   position: relative;
+  border: 2px solid black;
+}
+.fav-relative::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -8px;
+  background: black;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotate(-2deg);
 }
 .character-card {
   background-color: white;
@@ -378,14 +400,29 @@ header .header-container .deconnexion {
 .fav-relative-comics {
   position: relative;
   background-color: white;
-  box-shadow: 5px 5px 10px grey;
   margin-top: 25px;
   padding: 20px;
   box-sizing: border-box;
   height: 420px;
-  width: calc(100% / 4 - 30px / 4);
+  width: calc(100% / 4 - 60px / 4);
   display: flex;
   flex-direction: column;
+  border: 2px solid black;
+}
+.fav-relative-comics::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -8px;
+  background: black;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotate(-2deg);
 }
 .comic-card {
   background-color: white;
@@ -540,4 +577,835 @@ header .header-container .deconnexion {
   width: 300px;
   font-size: 20px;
   padding: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    width: 100vw;
+  }
+  header {
+    min-width: 100vw;
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    right: 0;
+  }
+  header .header-container {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+  header .logo-div {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+  }
+  header .top-logo {
+    height: 25%;
+  }
+  header .header-container .nav-section .site-nav-btns {
+    padding: 0;
+  }
+  header .header-container .nav-section span {
+    display: none;
+  }
+  header .header-container .logout-div {
+    display: flex;
+    flex-direction: column;
+  }
+  header .header-container .logout-div .deconnexion {
+    font-size: 1rem;
+  }
+  header .header-container .login-signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  header .header-container .login-signup .page-link {
+    color: white;
+    font-size: 1rem;
+  }
+  .search-bar-n-pagination {
+    flex-direction: column;
+  }
+  /* Composant laoder */
+  .thor {
+    height: 100px;
+  }
+  .cap {
+    height: 100px;
+  }
+  .iron-man {
+    height: 100px;
+  }
+  @keyframes thor {
+    0% {
+      bottom: 0px;
+      left: 0px;
+    }
+    100% {
+      bottom: 250px;
+      left: 150px;
+    }
+  }
+  @keyframes cap {
+    0% {
+      top: 0px;
+      right: 0px;
+    }
+    100% {
+      top: 150px;
+      right: 150px;
+    }
+  }
+  @keyframes iron-man {
+    0% {
+      top: 0px;
+      left: 0px;
+    }
+    100% {
+      top: 80px;
+      left: 150px;
+    }
+  }
+  /* Composant toolbar */
+  .search-bar-n-pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+  }
+  .search-bar-n-pagination .autocomplete-toolbar {
+    width: 90%;
+  }
+  .search-bar-n-pagination .items-per-page {
+    width: 90%;
+    padding: 0 15px;
+    display: flex;
+    gap: 15px;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+  }
+  .search-bar-n-pagination .page-nav {
+    width: 90%;
+    display: flex;
+    gap: 25px;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+  }
+  .search-bar-n-pagination .disabled {
+    background-color: rgb(242, 242, 242);
+    border: none;
+  }
+  .search-bar-n-pagination .disabled:active {
+    background-color: rgb(242, 242, 242);
+  }
+
+  /* Page des personnages */
+  .card-container {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+  }
+  .fav-relative {
+    background-color: white;
+    /* box-shadow: 5px 5px 10px grey; */
+    margin-top: 25px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 420px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    border: 2px solid black;
+  }
+  .fav-relative::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: black;
+    -webkit-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+  }
+  /* Page d'un personnage */
+
+  .single-char-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .single-char-info {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid black;
+    border-right: none;
+    width: 95%;
+    padding: 1rem;
+    align-items: center;
+  }
+  .appearing-comics {
+    width: 95%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .appearing-comic {
+    width: 100%;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .appears-in-title {
+    font-size: 24px;
+    font-weight: 700;
+    height: 20%;
+  }
+  .char-appears-in-cover {
+    width: 100%;
+  }
+
+  /* Page des comics */
+  .fav-relative-comics {
+    width: 100%;
+  }
+
+  /* Page de présentation d'un seul comic */
+  .single-comic-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .single-comic-title {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .single-comic-desc {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  /* Favorites */
+  .favorites-all {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 95%;
+    margin: 0 auto;
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .favorites-all img {
+    height: 150px;
+    margin-bottom: 30px;
+  }
+  .favorites-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .favorite-title {
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+  }
+  /* Signup page */
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .i-want-you {
+    width: 30%;
+    height: auto;
+  }
+  .signup-form .signup-info {
+    gap: 1rem;
+  }
+  .signup-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .signup-form .signup-info .signup-btn {
+    border: none;
+    background-color: none;
+    background: none;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 20px;
+    padding: 5px;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .main {
+    width: 100vw;
+  }
+  header {
+    min-width: 100vw;
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    right: 0;
+  }
+  header .header-container {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+  header .logo-div {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+  }
+  header .top-logo {
+    height: 25%;
+  }
+  header .header-container .nav-section .site-nav-btns {
+    padding: 0;
+  }
+  header .header-container .nav-section span {
+    display: none;
+  }
+  header .header-container .logout-div {
+    display: flex;
+    flex-direction: column;
+  }
+  header .header-container .logout-div .deconnexion {
+    font-size: 1rem;
+  }
+  header .header-container .login-signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  header .header-container .login-signup .page-link {
+    color: white;
+    font-size: 1rem;
+  }
+  .search-bar-n-pagination {
+    flex-direction: column;
+  }
+  /* Composant laoder */
+  .thor {
+    height: 150px;
+  }
+  .cap {
+    height: 150px;
+  }
+  .iron-man {
+    height: 150px;
+  }
+  @keyframes thor {
+    0% {
+      bottom: 0px;
+      left: 0px;
+    }
+    100% {
+      bottom: 250px;
+      left: 150px;
+    }
+  }
+  @keyframes cap {
+    0% {
+      top: 0px;
+      right: 0px;
+    }
+    100% {
+      top: 150px;
+      right: 150px;
+    }
+  }
+  @keyframes iron-man {
+    0% {
+      top: 0px;
+      left: 0px;
+    }
+    100% {
+      top: 80px;
+      left: 150px;
+    }
+  }
+  /* Composant toolbar */
+  .search-bar-n-pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+  }
+  .search-bar-n-pagination .autocomplete-toolbar {
+    width: 90%;
+  }
+  .search-bar-n-pagination .items-per-page {
+    width: 90%;
+    padding: 0 15px;
+    display: flex;
+    gap: 15px;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+  }
+  .search-bar-n-pagination .page-nav {
+    width: 90%;
+    display: flex;
+    gap: 25px;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+  }
+  .search-bar-n-pagination .disabled {
+    background-color: rgb(242, 242, 242);
+    border: none;
+  }
+  .search-bar-n-pagination .disabled:active {
+    background-color: rgb(242, 242, 242);
+  }
+
+  /* Page des personnages */
+  .card-container {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+  }
+  .fav-relative {
+    background-color: white;
+    /* box-shadow: 5px 5px 10px grey; */
+    margin-top: 25px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 420px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    border: 2px solid black;
+  }
+  .fav-relative::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: black;
+    -webkit-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+  }
+  /* Page d'un personnage */
+
+  .single-char-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .single-char-info {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid black;
+    border-right: none;
+    width: 95%;
+    padding: 1rem;
+    align-items: center;
+  }
+  .appearing-comics {
+    width: 95%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .appearing-comic {
+    width: 100%;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .appears-in-title {
+    font-size: 24px;
+    font-weight: 700;
+    height: 20%;
+  }
+  .char-appears-in-cover {
+    width: 100%;
+  }
+
+  /* Page des comics */
+  .fav-relative-comics {
+    width: 100%;
+  }
+
+  /* Page de présentation d'un seul comic */
+  .single-comic-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .single-comic-title {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .single-comic-desc {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  /* Favorites */
+  .favorites-all {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 95%;
+    margin: 0 auto;
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .favorites-all img {
+    height: 150px;
+    margin-bottom: 30px;
+  }
+  .favorites-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .favorite-title {
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+  }
+  /* Signup page */
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .i-want-you {
+    width: 30%;
+    height: auto;
+  }
+  .signup-form .signup-info {
+    gap: 1rem;
+  }
+  .signup-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .signup-form .signup-info .signup-btn {
+    border: none;
+    background-color: none;
+    background: none;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 20px;
+    padding: 5px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .main {
+    width: 100vw;
+  }
+  header {
+    min-width: 100vw;
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    right: 0;
+  }
+  header .header-container {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+  header .logo-div {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+  }
+  header .top-logo {
+    height: 25%;
+  }
+  header .header-container .nav-section .site-nav-btns {
+    padding: 0;
+  }
+  header .header-container .nav-section span {
+    display: none;
+  }
+  header .header-container .logout-div {
+    display: flex;
+    flex-direction: column;
+  }
+  header .header-container .logout-div .deconnexion {
+    font-size: 1rem;
+  }
+  header .header-container .login-signup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  header .header-container .login-signup .page-link {
+    color: white;
+    font-size: 1.1rem;
+  }
+  .search-bar-n-pagination {
+    flex-direction: column;
+  }
+  /* Composant laoder */
+  .thor {
+    height: 150px;
+  }
+  .cap {
+    height: 150px;
+  }
+  .iron-man {
+    height: 150px;
+  }
+  @keyframes thor {
+    0% {
+      bottom: 0px;
+      left: 0px;
+    }
+    100% {
+      bottom: 250px;
+      left: 50%;
+    }
+  }
+  @keyframes cap {
+    0% {
+      top: 0px;
+      right: 0px;
+    }
+    100% {
+      top: 150px;
+      right: 50%;
+    }
+  }
+  @keyframes iron-man {
+    0% {
+      top: 0px;
+      left: 0px;
+    }
+    100% {
+      top: 80px;
+      left: 50%;
+    }
+  }
+  /* Composant toolbar */
+  .search-bar-n-pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin: 1.5rem;
+  }
+  .search-bar-n-pagination .autocomplete-toolbar {
+    width: 90%;
+  }
+  .search-bar-n-pagination .items-per-page {
+    width: 90%;
+    padding: 0 15px;
+    display: flex;
+    gap: 15px;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  .search-bar-n-pagination .page-nav {
+    width: 90%;
+    display: flex;
+    gap: 25px;
+    box-sizing: border-box;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .search-bar-n-pagination .disabled {
+    background-color: rgb(242, 242, 242);
+    border: none;
+  }
+  .search-bar-n-pagination .disabled:active {
+    background-color: rgb(242, 242, 242);
+  }
+
+  /* Page des personnages */
+  .card-container {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+  .fav-relative {
+    background-color: white;
+    /* box-shadow: 5px 5px 10px grey; */
+    margin-top: 25px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 420px;
+    width: calc(100% / 2 - 1.2rem / 2);
+    display: flex;
+    position: relative;
+    border: 2px solid black;
+  }
+  .fav-relative::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: black;
+    -webkit-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+  }
+  /* Page d'un personnage */
+
+  .single-char-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .single-char-info {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid black;
+    border-right: none;
+    width: 95%;
+    padding: 1rem;
+    align-items: center;
+  }
+  .appearing-comics {
+    width: 95%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .appearing-comic {
+    width: calc(100% / 2 - 15px / 2);
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .appears-in-title {
+    font-size: 24px;
+    font-weight: 700;
+    height: 20%;
+  }
+  .char-appears-in-cover {
+    width: 100%;
+  }
+
+  /* Page des comics */
+  .fav-relative-comics {
+    width: calc(100% / 2 - 1.2rem / 2);
+  }
+
+  /* Page de présentation d'un seul comic */
+  .single-comic-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  .single-comic-title {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .single-comic-desc {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  /* Favorites */
+  .favorites-all {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    width: 95%;
+    margin: 0 auto;
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .favorites-all img {
+    height: 150px;
+    margin-bottom: 30px;
+  }
+  .favorites-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .favorite-title {
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+  }
+  /* Signup page */
+  .signup-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  .i-want-you {
+    width: 50%;
+    height: auto;
+  }
+  .signup-form .signup-info {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+  .signup-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .signup-form .signup-info .signup-btn {
+    border: none;
+    background-color: none;
+    background: none;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 20px;
+    padding: 5px;
+  }
 }

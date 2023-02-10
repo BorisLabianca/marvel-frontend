@@ -39,7 +39,7 @@ const Personnages = ({ token, addCharacterToFavorites }) => {
   return loading ? (
     <Loader statement={"Vos héros se réunissent."} />
   ) : (
-    <div>
+    <div className="main">
       <ToolBar
         searchContent={searchCharacter}
         setSearchContent={setSearchCharacter}
